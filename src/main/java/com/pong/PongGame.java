@@ -64,7 +64,8 @@ public class PongGame extends JPanel implements MouseMotionListener {
     // values
     // postcondition: one frame of the game is "played"
     public void gameLogic() {
-
+        //add commands here to make the game play propperly
+        
         aiPaddle.moveY(ball.getY());
 
         if (aiPaddle.isTouching(ball)) {

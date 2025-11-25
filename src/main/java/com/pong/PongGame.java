@@ -1,3 +1,8 @@
+//
+//  Class author: Daisuke Watanabe
+//  Date created: 11/25/25
+//  General description: The program will run the visual simulation of Pong.
+//
 package com.pong;
 
 import javax.swing.*;
@@ -14,7 +19,7 @@ public class PongGame extends JPanel implements MouseMotionListener {
     private int aiScore;
     private Ball ball;
     // step 1 add any other private variables you may need to play the game.
-    private Ball bonusBall;
+    private Paddle myPaddle;
 
     public PongGame() {
 
@@ -29,7 +34,7 @@ public class PongGame extends JPanel implements MouseMotionListener {
         addMouseMotionListener(this);
         ball = new Ball(200, 200, 10, 3, Color.RED, 10);
         //create any other objects necessary to play the game.
-        bonusBall = new Ball(200,200,10,3, Color.CYAN, 10);
+        myPaddle = new Paddle(20, 100, 50, 9, Color.RED);
     }
 
     // precondition: None
@@ -57,7 +62,7 @@ public class PongGame extends JPanel implements MouseMotionListener {
         aiPaddle.draw(g);
         
         //call the "draw" function of any visual component you'd like to show up on the screen.
-        bonusBall.draw(g)
+        myPaddle.draw(g);
     }
 
     // precondition: all required visual components are intialized to non-null
@@ -65,7 +70,7 @@ public class PongGame extends JPanel implements MouseMotionListener {
     // postcondition: one frame of the game is "played"
     public void gameLogic() {
         //add commands here to make the game play propperly
-        aiPaddle.moveY(bonusBall.getY());
+        myPaddle.moveY(userMouseY);
 
         aiPaddle.moveY(ball.getY());
 

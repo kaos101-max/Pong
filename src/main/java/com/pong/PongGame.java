@@ -89,7 +89,11 @@ public class PongGame extends JPanel implements MouseMotionListener {
     // pixels) and the ai scores
     // if the ball goes off the left edge (0)
     public void pointScored() {
-
+         if (ball.getX()<0){
+            aiScore++;
+            ball.setX();
+            ball.setY();
+         }        
     }
 
     // you do not need to edit the below methods, but please do not remove them as

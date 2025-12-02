@@ -71,13 +71,16 @@ public class PongGame extends JPanel implements MouseMotionListener {
     public void gameLogic() {
         //add commands here to make the game play propperly
         myPaddle.moveY(userMouseY);
-
+        ball.moveBall();
         aiPaddle.moveY(ball.getY());
 
         if (aiPaddle.isTouching(ball)) {
            ball.reverseX();
+        
         }
- 
+        if (myPaddle.isTouching(ball)) {
+           ball.reverseX();
+        }
         pointScored();
 
     }
@@ -91,8 +94,8 @@ public class PongGame extends JPanel implements MouseMotionListener {
     public void pointScored() {
          if (ball.getX()<0){
             aiScore++;
-            ball.setX();
-            ball.setY();
+            ball.setX(320);
+            ball.sety(240);
          }        
     }
 

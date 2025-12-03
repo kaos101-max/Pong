@@ -71,7 +71,9 @@ public class PongGame extends JPanel implements MouseMotionListener {
     public void gameLogic() {
         //add commands here to make the game play propperly
         myPaddle.moveY(userMouseY);
-        ball.moveBall();
+        ball.moveBall(); 
+        ball.bounceOffwalls(0,480);
+
         aiPaddle.moveY(ball.getY());
 
         if (aiPaddle.isTouching(ball)) {
@@ -92,11 +94,18 @@ public class PongGame extends JPanel implements MouseMotionListener {
     // pixels) and the ai scores
     // if the ball goes off the left edge (0)
     public void pointScored() {
+        
          if (ball.getX()<0){
-            aiScore++;
+            aiScore++; 
             ball.setX(320);
             ball.sety(240);
-         }        
+         } 
+         else if (ball.getX()>640){
+            playerScore++;
+            ball.setX(320);
+            ball.sety(240);
+         }
+
     }
 
     // you do not need to edit the below methods, but please do not remove them as

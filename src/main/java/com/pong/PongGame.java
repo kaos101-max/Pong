@@ -20,6 +20,7 @@ public class PongGame extends JPanel implements MouseMotionListener {
     private Ball ball;
     // step 1 add any other private variables you may need to play the game.
     private Paddle myPaddle;
+    private Wall barrier;
 
     public PongGame() {
 
@@ -35,6 +36,7 @@ public class PongGame extends JPanel implements MouseMotionListener {
         ball = new Ball(200, 200, 10, 3, Color.RED, 10);
         //create any other objects necessary to play the game.
         myPaddle = new Paddle(20, 100, 50, 9, Color.RED);
+        barrier = new Wall(320, 50, 50, 20, Color.BLUE);
     }
 
     // precondition: None
@@ -63,6 +65,7 @@ public class PongGame extends JPanel implements MouseMotionListener {
         
         //call the "draw" function of any visual component you'd like to show up on the screen.
         myPaddle.draw(g);
+        barrier.draw(g)
     }
 
     // precondition: all required visual components are intialized to non-null

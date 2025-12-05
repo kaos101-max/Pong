@@ -37,10 +37,10 @@ public class PongGame extends JPanel implements MouseMotionListener {
         addMouseMotionListener(this);
         ball = new Ball(200, 200, 10, 3, Color.RED, 10);
         //create any other objects necessary to play the game.
-        myPaddle = new Paddle(20, 100, 50, 9, Color.RED);
-        barrier = new Wall(320, 50, 50, 20, Color.BLUE);
-        slow = new SlowDown(320,200, 50, 50);
-        fast = new Speedup (320, 310, 70,70);
+        myPaddle = new Paddle(20, 100, 50, 9, Color.GRAY);
+        barrier = new Wall(320, 190, 70, 20, Color.BLUE);
+        slow = new SlowDown(300,70, 65, 65);
+        fast = new Speedup (300, 320, 65,65);
     }
 
     // precondition: None
@@ -97,13 +97,13 @@ public class PongGame extends JPanel implements MouseMotionListener {
             ball.reverseX();
         }
         if (slow.isTouching(ball)){
-            if(Math.abs(ball.getChangeX())>3){
+            if(Math.abs(ball.getChangeX()) > 3){
                 ball.setChangeX(ball.getChangeX() * 0.5);
             }
         }
         if (fast.isTouching(ball)){
-            if(Math.abs(ball.getChangeX())<5){
-                ball.setChangeX(ball.getChangeX() * 1.5);
+            if(Math.abs(ball.getChangeX()) < 6){
+                ball.setChangeX(ball.getChangeX() * 4);
             }
         }
         if(Math.abs(ball.getChangeX())<1){
